@@ -5,11 +5,14 @@ export function BreweriesIndex(props) {
       {props.breweries.map((brewery) => (
         <div key={brewery.id}>
           <h2>{brewery.name}</h2>
-          <p>{brewery.address}</p>
-          <p>{brewery.city}</p>
-          <p>{brewery.state}</p>
-          <p>{brewery.zip}</p>
-          <p>{brewery.website_url}</p>
+          <p>
+            <strong>Address: </strong>
+            {brewery.address + "., " + brewery.city + ", " + brewery.state + " " + brewery.zip}
+          </p>
+          <p>
+            <strong>Website: </strong>
+            {brewery.website_url}
+          </p>
         </div>
       ))}
     </div>
