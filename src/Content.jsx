@@ -1,10 +1,20 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+
 import { BreweriesIndex } from "./BreweriesIndex";
 
 export function Content() {
-  const breweries = [
-    { id: 1, name: "Light the Lamp", city: "Grayslake" },
-    { id: 2, name: "Harbor Brewing Company", city: "Round Lake Beach" },
-  ];
+  const [breweries, setBreweries] = useState([]);
+
+  const handleIndexBreweries = () => {
+    console.log("handleIndexBreweries");
+    axios.get("http://localhost:3000/breweries.json").then((response) => {
+      console.log(response.data);
+      setBreweries(response.data);
+    });
+  };
+
+  useEffect(handleIndexBreweries, []);
 
   return (
     <div>
