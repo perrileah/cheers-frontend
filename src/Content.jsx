@@ -5,19 +5,8 @@ import { BreweriesIndex } from "./BreweriesIndex";
 import { CheckinsIndex } from "./CheckinsIndex";
 
 export function Content() {
-  const checkins = [
-    {
-      id: 1,
-      brewery_id: "12345",
-      user_id: 1,
-      rating: 5,
-      image_url: "image_url",
-      comments: "great beer and friendly staff",
-    },
-    { id: 2, brewery_id: "167835", user_id: 1, rating: 3, image_url: "image_url", comments: "enjoyable experience" },
-  ];
-
   const [breweries, setBreweries] = useState([]);
+  const [checkins, setCheckins] = useState([]);
 
   const handleIndexBreweries = () => {
     console.log("handleIndexBreweries");
@@ -27,7 +16,16 @@ export function Content() {
     });
   };
 
+  const handleIndexCheckins = () => {
+    console.log("handleIndexCheckins");
+    axios.get("http://localhost:3000/checkins.json").then((response) => {
+      console.log(response.data);
+      setCheckins(response.data);
+    });
+  };
+
   useEffect(handleIndexBreweries, []);
+  useEffect(handleIndexCheckins, []);
 
   return (
     <div>
