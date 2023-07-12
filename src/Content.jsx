@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import { BreweriesIndex } from "./BreweriesIndex";
 import { CheckinsIndex } from "./CheckinsIndex";
+import { CheckinsNew } from "./CheckinsNew";
 
 export function Content() {
   const [breweries, setBreweries] = useState([]);
@@ -24,12 +25,21 @@ export function Content() {
     });
   };
 
+  const handleCreateCheckin = (params, successCallback) => {
+    console.log("handleCreatePhoto", params);
+    axios.post("http://localhost:3000/checkins.json", params).then((response) => {
+      setCheckins([...checkins, response.data]);
+      successCallback();
+    });
+  };
+
   useEffect(handleIndexBreweries, []);
   useEffect(handleIndexCheckins, []);
 
   return (
     <div>
       <h1>Welcome to Cheers! a brewery-rating app</h1>
+      <CheckinsNew onCreateCheckin={handleCreateCheckin} />
       <CheckinsIndex checkins={checkins} />
       <BreweriesIndex breweries={breweries} />
     </div>
