@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { BreweriesIndex } from "./BreweriesIndex";
 import { CheckinsIndex } from "./CheckinsIndex";
 import { CheckinsNew } from "./CheckinsNew";
+import { Modal } from "./Modal";
 
 export function Content() {
   const [breweries, setBreweries] = useState([]);
   const [checkins, setCheckins] = useState([]);
+  const [isCheckinsNewVisible, setIsCheckinsNewVisible] = useState(false);
+  const [currentCheckin, setCurrentCheckin] = useState({});
 
   const handleIndexBreweries = () => {
     console.log("handleIndexBreweries");
@@ -33,6 +36,17 @@ export function Content() {
     });
   };
 
+  const handleShowCheckin = (checkin) => {
+    console.log("handleShowCheckin", checkin);
+    setIsCheckinsNewVisible(true);
+    setCurrentCheckin(checkin);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsCheckinsNewVisible(false);
+  };
+
   useEffect(handleIndexBreweries, []);
   useEffect(handleIndexCheckins, []);
 
@@ -42,6 +56,9 @@ export function Content() {
       <CheckinsNew onCreateCheckin={handleCreateCheckin} />
       <CheckinsIndex checkins={checkins} />
       <BreweriesIndex breweries={breweries} />
+      <Modal show={isCheckinsNewVisible} onClose={handleClose}>
+        <h1>Test</h1>
+      </Modal>
     </div>
   );
 }
