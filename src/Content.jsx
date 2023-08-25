@@ -6,6 +6,8 @@ import { CheckinsIndex } from "./CheckinsIndex";
 import { CheckinsNew } from "./CheckinsNew";
 import { Modal } from "./Modal";
 import { BreweriesShow } from "./BreweriesShow";
+import { Routes, Route } from "react-router-dom";
+import { CheckinsShow } from "./CheckinsShow";
 
 export function Content() {
   const [breweries, setBreweries] = useState([]);
@@ -54,9 +56,13 @@ export function Content() {
   return (
     <div>
       <h1>Welcome to Cheers! a brewery-rating app</h1>
-      <CheckinsNew onCreateCheckin={handleCreateCheckin} />
-      <CheckinsIndex checkins={checkins} />
-      <BreweriesIndex breweries={breweries} onShowBrewery={handleShowBrewery} />
+      <Routes>
+        <Route path="/" element={<BreweriesIndex breweries={breweries} onShowBrewery={handleShowBrewery} />} />
+        <Route path="/breweries" element={<BreweriesIndex breweries={breweries} onShowBrewery={handleShowBrewery} />} />
+        <Route path="/checkinsnew" element={<CheckinsNew onCreateCheckin={handleCreateCheckin} />} />
+        <Route path="/checkins" element={<CheckinsIndex checkins={checkins} />} />
+      </Routes>
+
       <Modal show={isBreweriesShowVisible} onClose={handleClose}>
         <BreweriesShow brewery={currentBrewery} />
       </Modal>
