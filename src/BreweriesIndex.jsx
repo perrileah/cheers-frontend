@@ -13,6 +13,7 @@ export function BreweriesIndex(props) {
             <strong>Website: </strong>
             {brewery.website_url}
           </p>
+          <button onClick={() => props.onShowBrewery(brewery)}>More info</button>
         </div>
       ))}
     </div>

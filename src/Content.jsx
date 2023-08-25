@@ -5,12 +5,13 @@ import { BreweriesIndex } from "./BreweriesIndex";
 import { CheckinsIndex } from "./CheckinsIndex";
 import { CheckinsNew } from "./CheckinsNew";
 import { Modal } from "./Modal";
+import { BreweriesShow } from "./BreweriesShow";
 
 export function Content() {
   const [breweries, setBreweries] = useState([]);
   const [checkins, setCheckins] = useState([]);
-  const [isCheckinsNewVisible, setIsCheckinsNewVisible] = useState(false);
-  const [currentCheckin, setCurrentCheckin] = useState({});
+  const [isBreweriesShowVisible, setIsBreweriesShowVisible] = useState(false);
+  const [currentBrewery, setCurrentBrewery] = useState({});
 
   const handleIndexBreweries = () => {
     console.log("handleIndexBreweries");
@@ -36,15 +37,15 @@ export function Content() {
     });
   };
 
-  const handleShowCheckin = (checkin) => {
-    console.log("handleShowCheckin", checkin);
-    setIsCheckinsNewVisible(true);
-    setCurrentCheckin(checkin);
+  const handleShowBrewery = (brewery) => {
+    console.log("handleShowBrewery", brewery);
+    setIsBreweriesShowVisible(true);
+    setCurrentBrewery(brewery);
   };
 
   const handleClose = () => {
     console.log("handleClose");
-    setIsCheckinsNewVisible(false);
+    setIsBreweriesShowVisible(false);
   };
 
   useEffect(handleIndexBreweries, []);
@@ -55,9 +56,9 @@ export function Content() {
       <h1>Welcome to Cheers! a brewery-rating app</h1>
       <CheckinsNew onCreateCheckin={handleCreateCheckin} />
       <CheckinsIndex checkins={checkins} />
-      <BreweriesIndex breweries={breweries} />
-      <Modal show={isCheckinsNewVisible} onClose={handleClose}>
-        <h1>Test</h1>
+      <BreweriesIndex breweries={breweries} onShowBrewery={handleShowBrewery} />
+      <Modal show={isBreweriesShowVisible} onClose={handleClose}>
+        <BreweriesShow brewery={currentBrewery} />
       </Modal>
     </div>
   );
