@@ -8,6 +8,7 @@ export function BreweriesIndex(props) {
         <div className="brewery-list" key={brewery.id}>
           <Link to={`/breweries/${brewery.id}`}>
             <h2>{brewery.name}</h2>
+            <img src={brewery.image_url} alt="image link" />
             <p>
               <strong>Address: </strong>
               {brewery.address + "., " + brewery.city + ", " + brewery.state + " " + brewery.zip}

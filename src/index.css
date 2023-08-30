@@ -6,3 +6,11 @@ html {
   text-decoration: none;
   color: black;
 }
+
+.brewery-list img{
+  width: 300px;
+}
+
+.brewery-show img{
+  width: 500px;
+}
