@@ -1,6 +1,19 @@
 import { Modal } from "./Modal";
+import { useState, useEffect } from "react";
 
 export function BreweriesShow(props) {
+  const [isCheckinsNewVisible, setIsCheckinsNewVisible] = useState(false);
+
+  const handleShowNewCheckin = () => {
+    console.log("handleShowNewCheckin");
+    setIsCheckinsNewVisible(true);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsCheckinsNewVisible(false);
+  };
+
   return (
     <div className="brewery-show">
       <h1>{props.brewery.name}</h1>
@@ -21,7 +34,10 @@ export function BreweriesShow(props) {
         <strong>Longitude: </strong>
         {props.brewery.longitude}
       </p>
-      <button onClick={Modal}>Create a Check-In!</button>
+      <button onClick={handleShowNewCheckin}>Create a Check-In!</button>
+      <Modal show={isCheckinsNewVisible} onClose={handleClose}>
+        <h1>Test</h1>
+      </Modal>
     </div>
   );
 }
