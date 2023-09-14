@@ -1,5 +1,6 @@
 import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
+import { CheckinsNew } from "./CheckinsNew";
 
 export function BreweriesShow(props) {
   const [isCheckinsNewVisible, setIsCheckinsNewVisible] = useState(false);
@@ -36,7 +37,7 @@ export function BreweriesShow(props) {
       </p>
       <button onClick={handleShowNewCheckin}>Create a Check-In!</button>
       <Modal show={isCheckinsNewVisible} onClose={handleClose}>
-        <h1>Test</h1>
+        <CheckinsNew />
       </Modal>
     </div>
   );

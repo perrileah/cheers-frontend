@@ -34,7 +34,7 @@ export function Content() {
   };
 
   const handleCreateCheckin = (params, successCallback) => {
-    console.log("handleCreatePhoto", params);
+    console.log("handleCreateCheckin", params);
     axios.post("http://localhost:3000/checkins.json", params).then((response) => {
       setCheckins([...checkins, response.data]);
       successCallback();

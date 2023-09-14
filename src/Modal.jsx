@@ -1,5 +1,4 @@
 import "./Modal.css";
-import { CheckinsNew } from "./CheckinsNew";
 
 export function Modal(props) {
   if (props.show) {
