@@ -8,7 +8,6 @@ import { Modal } from "./Modal";
 import { BreweriesShow } from "./BreweriesShow";
 import { Routes, Route } from "react-router-dom";
 import { CheckinsShow } from "./CheckinsShow";
-import { BreweriesShowPage } from "./BreweriesShowPage";
 import { BreweryDetails } from "./BreweryDetails";
 
 export function Content() {
