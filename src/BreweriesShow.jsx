@@ -15,6 +15,14 @@ export function BreweriesShow(props) {
     setIsCheckinsNewVisible(false);
   };
 
+  const handleCreateCheckin = (params, successCallback) => {
+    console.log("handleCreateCheckin", params);
+    axios.post("http://localhost:3000/checkins.json", params).then((response) => {
+      setCheckins([...checkins, response.data]);
+      successCallback();
+    });
+  };
+
   return (
     <div className="brewery-show">
       <h1>{props.brewery.name}</h1>

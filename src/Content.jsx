@@ -65,10 +65,6 @@ export function Content() {
         <Route path="/breweries/:id" element={<BreweryDetails />} />
       </Routes>
       <BreweriesShow brewery={currentBrewery} />
-
-      {/* <Modal show={isBreweriesShowVisible} onClose={handleClose}>
-        <BreweriesShow brewery={currentBrewery} />
-      </Modal> */}
     </div>
   );
 }
