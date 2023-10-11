@@ -9,6 +9,8 @@ import { BreweriesShow } from "./BreweriesShow";
 import { Routes, Route } from "react-router-dom";
 import { CheckinsShow } from "./CheckinsShow";
 import { BreweryDetails } from "./BreweryDetails";
+import { Signup } from "./Signup";
+import { Login } from "./Login";
 
 export function Content() {
   const [breweries, setBreweries] = useState([]);
@@ -58,6 +60,8 @@ export function Content() {
     <div>
       <h1>Welcome to Cheers! a brewery-rating app</h1>
       <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<BreweriesIndex breweries={breweries} onShowBrewery={handleShowBrewery} />} />
         <Route path="/breweries" element={<BreweriesIndex breweries={breweries} onShowBrewery={handleShowBrewery} />} />
         <Route path="/checkinsnew" element={<CheckinsNew onCreateCheckin={handleCreateCheckin} />} />
