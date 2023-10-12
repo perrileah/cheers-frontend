@@ -5,9 +5,10 @@ import { BrowserRouter } from "react-router-dom";
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 
-mapboxgl.accessToken = "ACCESS TOKEN";
+mapboxgl.accessToken = "pk.eyJ1IjoibGVhaHBlcnJpIiwiYSI6ImNsaDB3cXN4aDBhaTQzcHVqdzJhb3hiZDMifQ.UjViRKqejimhTNWFCTH9iA";
 
 function App() {
+  // setting map default state
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-70.9);
@@ -23,6 +24,7 @@ function App() {
       zoom: zoom,
     });
     map.current.on("move", () => {
+      //resets values as user interacts with map
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
