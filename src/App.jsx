@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 
-mapboxgl.accessToken = "pk.eyJ1IjoibGVhaHBlcnJpIiwiYSI6ImNsaDB3cXN4aDBhaTQzcHVqdzJhb3hiZDMifQ.UjViRKqejimhTNWFCTH9iA";
+mapboxgl.accessToken = "API KEY";
 
 function App() {
   // setting map default state
