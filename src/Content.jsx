@@ -16,7 +16,7 @@ export function Content() {
   const [breweries, setBreweries] = useState([]);
   const [checkins, setCheckins] = useState([]);
   const [isBreweriesShowVisible, setIsBreweriesShowVisible] = useState(false);
-  const [currentBrewery, setCurrentBrewery] = useState({});
+  const [currentBrewery, setCurrentBrewery] = useState({ latitude: 0, longitude: 0 });
 
   const handleIndexBreweries = () => {
     console.log("handleIndexBreweries");
@@ -58,7 +58,6 @@ export function Content() {
 
   return (
     <div>
-      <h1>Welcome to Cheers! a brewery-rating app</h1>
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />

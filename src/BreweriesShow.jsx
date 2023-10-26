@@ -1,9 +1,35 @@
 import { Modal } from "./Modal";
-import { useState, useEffect } from "react";
 import { CheckinsNew } from "./CheckinsNew";
 import axios from "axios";
+import mapboxgl from "mapbox-gl";
+import React, { useRef, useEffect, useState } from "react";
+
+mapboxgl.accessToken = "";
 
 export function BreweriesShow(props) {
+  // setting map default state
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+  const [lng, setLng] = useState(Number(props.brewery.longitude));
+  const [lat, setLat] = useState(Number(props.brewery.latitude));
+  const [zoom, setZoom] = useState(13);
+
+  useEffect(() => {
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: "mapbox://styles/mapbox/streets-v12",
+      center: [lng, lat],
+      zoom: zoom,
+    });
+    map.current.on("move", () => {
+      //resets values as user interacts with map
+      setLng(map.current.getCenter().lng.toFixed(4));
+      setLat(map.current.getCenter().lat.toFixed(4));
+      setZoom(map.current.getZoom().toFixed(2));
+    });
+  });
+
   const [isCheckinsNewVisible, setIsCheckinsNewVisible] = useState(false);
 
   const handleShowNewCheckin = () => {
@@ -48,6 +74,10 @@ export function BreweriesShow(props) {
       <Modal show={isCheckinsNewVisible} onClose={handleClose}>
         <CheckinsNew onCreateCheckin={handleCreateCheckin} />
       </Modal>
+      <div className="sidebar">
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      </div>
+      <div ref={mapContainer} className="map-container" />
     </div>
   );
 }

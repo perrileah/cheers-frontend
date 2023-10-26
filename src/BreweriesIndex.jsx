@@ -24,17 +24,17 @@ export function BreweriesIndex(props) {
         .filter((brewery) => brewery.name.toLowerCase().includes(searchFilter.toLowerCase()))
         .map((brewery) => (
           <div key={brewery.id}>
+            <h2>{brewery.name}</h2>
+            <img src={brewery.image_url} alt="image link" />
+            <p>
+              <strong>Address: </strong>
+              {brewery.address + "., " + brewery.city + ", " + brewery.state + " " + brewery.zip}
+            </p>
+            <p>
+              <strong>Website: </strong>
+              {brewery.website_url}
+            </p>
             <Link to={`/breweries/${brewery.id}`}>
-              <h2>{brewery.name}</h2>
-              <img src={brewery.image_url} alt="image link" />
-              <p>
-                <strong>Address: </strong>
-                {brewery.address + "., " + brewery.city + ", " + brewery.state + " " + brewery.zip}
-              </p>
-              <p>
-                <strong>Website: </strong>
-                {brewery.website_url}
-              </p>
               <button onClick={() => props.onShowBrewery(brewery)}>More info</button>
             </Link>
           </div>
