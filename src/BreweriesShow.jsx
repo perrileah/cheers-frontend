@@ -4,7 +4,7 @@ import axios from "axios";
 import mapboxgl from "mapbox-gl";
 import React, { useRef, useEffect, useState } from "react";
 
-mapboxgl.accessToken = "pk.eyJ1IjoibGVhaHBlcnJpIiwiYSI6ImNsaDB3cXN4aDBhaTQzcHVqdzJhb3hiZDMifQ.UjViRKqejimhTNWFCTH9iA";
+mapboxgl.accessToken = "";
 
 export function BreweriesShow(props) {
   // setting map default state
