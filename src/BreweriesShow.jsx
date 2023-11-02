@@ -4,7 +4,7 @@ import axios from "axios";
 import mapboxgl from "mapbox-gl";
 import React, { useRef, useEffect, useState } from "react";
 
-mapboxgl.accessToken = "";
+mapboxgl.accessToken = import.meta.env.VITE_SOME_KEY;
 
 export function BreweriesShow(props) {
   // setting map default state
@@ -12,10 +12,12 @@ export function BreweriesShow(props) {
   const map = useRef(null);
   const [lng, setLng] = useState(Number(props.brewery.longitude));
   const [lat, setLat] = useState(Number(props.brewery.latitude));
-  const [zoom, setZoom] = useState(13);
+  const [zoom, setZoom] = useState(10);
 
   useEffect(() => {
+    console.log("before", props.brewery.longitude, props.brewery.latitude);
     if (map.current) return; // initialize map only once
+    console.log("after", props.brewery.longitude, props.brewery.latitude);
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",

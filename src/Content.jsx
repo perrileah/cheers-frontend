@@ -16,7 +16,7 @@ export function Content() {
   const [breweries, setBreweries] = useState([]);
   const [checkins, setCheckins] = useState([]);
   const [isBreweriesShowVisible, setIsBreweriesShowVisible] = useState(false);
-  const [currentBrewery, setCurrentBrewery] = useState({ latitude: 0, longitude: 0 });
+  const [currentBrewery, setCurrentBrewery] = useState(null);
 
   const handleIndexBreweries = () => {
     console.log("handleIndexBreweries");
@@ -67,7 +67,7 @@ export function Content() {
         <Route path="/checkins" element={<CheckinsIndex checkins={checkins} />} />
         <Route path="/breweries/:id" element={<BreweryDetails />} />
       </Routes>
-      <BreweriesShow brewery={currentBrewery} />
+      {currentBrewery && <BreweriesShow brewery={currentBrewery} />}
     </div>
   );
 }
