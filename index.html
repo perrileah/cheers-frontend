@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -23,8 +24,15 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
+                        <div id="signup">
+                            <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
+                        </div>
+                       <div id="login">
                         <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                       </div>
+                       <div id="logout">
+                        <li class="nav-item"><a class="nav-link" href="#" onClick="handleClick()"> Logout</a></li>
+                       </div>
                         <li class="nav-item"><a class="nav-link" href="/breweries">Breweries</a></li>
                         <li class="nav-item"><a class="nav-link" href="/checkins">Checkins</a></li>
                     </ul>
@@ -58,6 +66,24 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <!-- Conditional rendering login/logout -->
+        <script>
+            localStorage.jwt === undefined ? 
+            alert("I'm not signed in!") : alert("I'm signed in!")
+            const login = document.getElementById('login'); console.log(login)
+
+            const logout = document.getElementById('logout');
+            console.log(logout)
+            
+            const handleClick = (event) => {
+                alert("I'm in handleClick")
+                // event.preventDefault();
+                // delete axios.defaults.headers.common["Authorization"];
+                localStorage.removeItem("jwt");
+                window.location.href = "/";
+            };
+
+        </script>
     </body>
 </html>
 
