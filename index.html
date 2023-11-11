@@ -25,13 +25,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <div id="signup">
-                            <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
+                            <li class="nav-item login"><a class="nav-link" href="/signup">Sign Up</a></li>
                         </div>
                        <div id="login">
-                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                        <li class="nav-item login"><a class="nav-link" href="/login">Log In</a></li>
                        </div>
                        <div id="logout">
-                        <li class="nav-item"><a class="nav-link" href="#" onClick="handleClick()"> Logout</a></li>
+                        <li class="nav-item logout"><a class="nav-link" href="#" onClick="handleClick()"> Logout</a></li>
                        </div>
                         <li class="nav-item"><a class="nav-link" href="/breweries">Breweries</a></li>
                         <li class="nav-item"><a class="nav-link" href="/checkins">Checkins</a></li>
@@ -68,13 +68,33 @@
         <script src="js/scripts.js"></script>
         <!-- Conditional rendering login/logout -->
         <script>
-            localStorage.jwt === undefined ? 
-            alert("I'm not signed in!") : alert("I'm signed in!")
-            const login = document.getElementById('login'); console.log(login)
+            const isLoggedIn = localStorage.jwt !== undefined 
+            // ? 
+            // alert("I'm not signed in!") : alert("I'm signed in!")
 
-            const logout = document.getElementById('logout');
-            console.log(logout)
+            if (isLoggedIn) {
+                
+            //     Array.from(document.querySelectorAll('.nav-item.login')).forEach((e) => { e.classList.add("login-hidden")})
+
+            //     const login = document.getElementById('login');
+            //     login.classList.add("login-hidden");
+
+            //     const signup = document.getElementById('signup');
+            //     signup.classList.add("login-hidden");
+
+               
+            } else {
+
+                document.querySelector('.nav-item.logout').classList.add("login-hidden")
+
+                // const logout = document.getElementById('logout');
+                // login.classList.add("login-hidden")
+
+            //     debugger
+            }
+          
             
+
             const handleClick = (event) => {
                 alert("I'm in handleClick")
                 // event.preventDefault();
