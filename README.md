@@ -1,0 +1,1 @@
+Cheers! is an app that allows users to find, check-in and rank craft breweries. As a craft beer lover and manager at a brewery myself, I wanted to create an app similar to Untappd, the popular beer-ranking platform, but specific to breweries. I had a lot of fun creating this application while learning new web dev technologies and techniques.
