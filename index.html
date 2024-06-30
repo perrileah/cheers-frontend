@@ -74,13 +74,13 @@
 
             if (isLoggedIn) {
                 
-            //     Array.from(document.querySelectorAll('.nav-item.login')).forEach((e) => { e.classList.add("login-hidden")})
+                Array.from(document.querySelectorAll('.nav-item.login')).forEach((e) => { e.classList.add("login-hidden")})
 
-            //     const login = document.getElementById('login');
-            //     login.classList.add("login-hidden");
+                const login = document.getElementById('login');
+                login.classList.add("login-hidden");
 
-            //     const signup = document.getElementById('signup');
-            //     signup.classList.add("login-hidden");
+                const signup = document.getElementById('signup');
+                signup.classList.add("login-hidden");
 
                
             } else {
@@ -96,9 +96,9 @@
             
 
             const handleClick = (event) => {
-                alert("I'm in handleClick")
-                // event.preventDefault();
-                // delete axios.defaults.headers.common["Authorization"];
+            //     alert("I'm in handleClick")
+            //     event.preventDefault();
+            //     delete axios.defaults.headers.common["Authorization"];
                 localStorage.removeItem("jwt");
                 window.location.href = "/";
             };
